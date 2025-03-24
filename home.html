@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            height: 1000;
+            height: 100vh;
             background-color: #f9f9f9;
         }
 
@@ -32,14 +32,15 @@
         }
 
         header h1 {
-            font-size: 1.5em;
+            font-size: 2em;
             margin: 0;
             display: flex;
             align-items: center;
         }
 
         .logo {
-            height: 75px;
+            height: 100px;
+            border-radius: 50px;
             margin-right: 15px;
         }
 
@@ -62,37 +63,77 @@
 
         nav ul li {
             margin-left: 20px;
+            font-size: 20px;
         }
 
         nav ul li a {
             color: white;
+            font-size: 20px;
             text-decoration: none;
         }
 
         .profile-button {
+            position: relative;
             margin-left: 20px;
             background-color: #ffcc00;
             color: #00274d;
             border: none;
-            width: 40px; /* Adjust as needed */
-            height: 40px; /* Adjust as needed */
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 24px; /* Adjust emoji size */
+            font-size: 24px;
         }
 
         .profile-button:hover {
             background-color: #ffaa00;
         }
 
+        .profile-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .profile-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        .profile-menu ul li {
+            padding: 10px 20px;
+        }
+
+        .profile-menu ul li a {
+            color: #00274d;
+            text-decoration: none;
+        }
+
+        .profile-menu ul li a:hover {
+            background-color: #f0f0f0;
+        }
+
         .hero {
+            background: url(/assets/home-bg.png);
+            /* background-repeat: no-repeat; */
+            background-size:cover;
             text-align: center;
-            padding: 100px 20px;
+            padding: 100px;
+            padding-top: 250px;
             background-color: #00509e;
-            color: white;
+            color: rgb(14, 13, 13);
+            height: 50vh;
         }
 
         .hero button {
@@ -108,10 +149,11 @@
         }
 
         .about {
-            height: 200px;
+            height:80vh;
             text-align: center;
+            color: #f2f2f2;;
             padding: 50px 20px;
-            background-color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         footer {
@@ -125,6 +167,19 @@
         function learnMore() {
             alert("Welcome to Edu Access! We're here to empower underserved communities through education.");
         }
+
+        function toggleProfileMenu() {
+            const menu = document.querySelector('.profile-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.profile-menu');
+            const button = document.querySelector('.profile-button');
+            if (!button.contains(event.target) && !menu.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
     </script>
 </head>
 <body>
@@ -134,21 +189,30 @@
             <h1>Edu Access</h1>
             <nav>
                 <ul>
-                    <li><a href="/home.html">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="/home.html#hero">Home</a></li>
+                    <li><a href="/home.html#about">About</a></li>
                     <li><a href="/library.html">Library</a></li>
                 </ul>
-                <button class="profile-button" onclick="alert('Profile page will appear here.')">👤</button>
+                <div class="profile-button" onclick="toggleProfileMenu()">👤
+                    <div class="profile-menu">
+                        <ul>
+                            <li><a href="#">Email</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Downloads</a></li>
+                            <li><a href="#">Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
     <main>
-        <section class="hero">
+        <section class="hero" id="hero">
             <h2>Empowering Underserved Communities</h2>
             <p>We aim to bridge the gap in quality education for everyone, everywhere.</p>
             <button onclick="learnMore()">Learn More</button>
         </section>
-        <section class="about">
+        <section class="about" id="about">
             <h3>Our Mission</h3>
             <p>Edu Access is dedicated to providing accessible, high-quality education resources to those who need them most.</p>
         </section>
