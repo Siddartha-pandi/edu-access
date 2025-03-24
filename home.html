@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 id="title">EduAccess</h1>
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 1000;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #00274d;
+            color: white;
+            width: 100%; /* Ensures the header spans the full width */
+        }
+
+        .header-content {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-content img {
+            margin-right: 20px; /* Space between logo and title */
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 75px;
+            margin-right: 15px;
+        }
+
+        .header-content h1 {
+            margin-left: 10px;
+        }
+
+        nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .auth-buttons {
+            display: flex;
+            margin-left: 20px;
+        }
+
+        .auth-buttons button {
+            margin-left: 10px;
+            background-color: #ffcc00;
+            color: #00274d;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #ffaa00;
+        }
+
+        .hero {
+            /* height: 500px; */
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #00509e;
+            color: white;
+        }
+
+        .hero button {
+            background-color: #ffcc00;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #00509e;
+        }
+
+        .hero button:hover {
+            background-color: #ffaa00;
+        }
+
+        .about {
+            height: 200px;
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #00274d;
+            color: white;
+        }
+    </style>
+    <script>
+        function learnMore() {
+            alert("Welcome to Edu Access! We're here to empower underserved communities through education.");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/assets/logo.png" alt="Edu Access Logo" class="logo">
+            <h1>Edu Access</h1>
+            <nav>
+                <ul>
+                    <li><a href="/home.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="/library.html">Library</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button onclick="alert('Login form will appear here.')">Login</button>
+                    <button onclick="alert('Register form will appear here.')">Register</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Empowering Underserved Communities</h2>
+            <p>We aim to bridge the gap in quality education for everyone, everywhere.</p>
+            <button onclick="learnMore()">Learn More</button>
+        </section>
+        <section class="about">
+            <h3>Our Mission</h3>
+            <p>Edu Access is dedicated to providing accessible, high-quality education resources to those who need them most.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Edu Access. All rights reserved.</p>
+    </footer>
+</body>
+</html>

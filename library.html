@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAccess</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .search-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 50%;
+            margin: 0 10px;
+        }
+
+        .search-button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .language-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .user-icon {
+            width: 30px;
+            height: auto;
+        }
+
+        main {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .filter-section {
+            width: 250px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .results-section {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .filter-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .filter-section select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .result-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .result-item h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/assets/logo.png" alt="EduAccess Logo" class="logo">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search or enter code">
+            <button class="search-button">Search</button>
+        </div>
+        <div class="language-container">
+            <select class="language-select">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="ur">Urdu</option>
+                <option value="sa">Sanskrit</option>
+            </select>
+            <img src="https://diksha.gov.in/assets/images/profile-icon.svg" alt="User" class="user-icon">
+        </div>
+    </header>
+
+    <main>
+        <section class="filter-section">
+            <h2>Filter</h2>
+            <select>
+                <option value="">Select Board</option>
+                <option value="ncert">NCERT</option>
+                <option value="scert">SCERT</option>
+            </select>
+            <select>
+                <option value="">Select Medium</option>
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="ur">Urdu</option>
+                <option value="sa">Sanskrit</option>
+            </select>
+            <select>
+                <option value="">Select Class</option>
+                <option value="1">Class 1</option>
+                <option value="2">Class 2</option>
+            </select>
+            <select>
+                <option value="">Select Subject</option>
+                <option value="math">Math</option>
+                <option value="science">Science</option>
+            </select>
+            <select>
+                <option value="">Select Content type</option>
+                <option value="etextbook">eTextbook</option>
+                <option value="learningresource">Learning Resource</option>
+                <option value="course">Course</option>
+            </select>
+        </section>
+
+        <section class="results-section">
+            <h2>Showing results in "all" 822066</h2>
+            <div class="result-grid">
+                <div class="result-item">
+                    <h3>Learning Resource</h3>
+                    <p>Urdu</p>
+                    <p>Board: NCERT</p>
+                    <p>Adult Education Medium: Urdu</p>
+                </div>
+                <div class="result-item">
+                    <h3>Learning Resource</h3>
+                    <p>Sanskrit</p>
+                    <p>Board: NCERT</p>
+                    <p>Adult Education Medium: Sanskrit</p>
+                    <p>Subject: Foundational Literacy and Numeracy</p>
+                </div>
+                <div class="result-item">
+                    <h3>eTextbook</h3>
+                    <p>eTextbook NCERT 2403</p>
+                    <p>Board: SCERT</p>
+                    <p>Class 6 Medium: English</p>
+                    <p>Subject: Education</p>
+                </div>
+                <div class="result-item">
+                    <h3>Learning Resource</h3>
+                    <p>English</p>
+                    <p>Board: NCERT</p>
+                    <p>Adult Education Medium: English</p>
+                    <p>Subject: Foundational Literacy and Numeracy</p>
+                </div>
+                <div class="result-item">
+                    <h3>Course</h3>
+                    <p>Virtual Lab as a teaching learning tool for Chemistry Eng 82</p>
+                    <p>Board: NCERT</p>
+                    <p>CPD Medium: English</p>
+                    <p>Subject: CPD</p>
+                </div>
+                <div class="result-item">
+                    <h3>Learning Resource</h3>
+                    <p>Hindi</p>
+                    <p>Board: NCERT</p>
+                    <p>Adult Education Medium: Hindi</p>
+                    <p>Subject: Foundational Literacy and Numeracy</p>
+                </div>
+                <div class="result-item">
+                    <h3>Explanation Content</h3>
+                    <p>Watch: Virtual Labs as a teaching learning tool for Chemistry Eng 82</p>
+                </div>
+                <div class="result-item">
+                    <h3>Explanation Content</h3>
+                    <p>Refer: Virtual Labs as a teaching learning tool for Chemistry Eng 82</p>
+                </div>
+                <div class="result-item">
+                    <h3>Learning Resource</h3>
+                    <p>Learning Resource NCERT 2403</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Footer content here</p>
+    </footer>
+</body>
+</html>
