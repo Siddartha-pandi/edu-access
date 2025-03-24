@@ -3,235 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAccess</title>
+    <title>Library Search</title>
     <style>
-        body {
-            font-family: sans-serif;
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00274d, #007bff);
         }
 
-        header {
-            background-color: #f0f0f0;
-            padding: 10px 20px;
+        .container {
             display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            background-color: #00274d;
+            color: white;
+            width: 100%;
+        }
+
+        .header-content {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
             justify-content: space-between;
+        }
+
+        .header-content img {
+            margin-right: 20px;
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin: 0;
+            display: flex;
             align-items: center;
         }
 
         .logo {
-            width: 50px;
-            height: auto;
+            height: 75px;
+            margin-right: 15px;
         }
 
-        .search-container {
-            flex-grow: 1;
+        .header-content h1 {
+            margin-left: 10px;
+        }
+
+        nav {
+            margin-left: auto;
             display: flex;
-            justify-content: center;
             align-items: center;
         }
 
-        .search-input {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 50%;
-            margin: 0 10px;
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
         }
 
-        .search-button {
-            padding: 8px 16px;
-            background-color: #007bff;
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .profile-button {
+            margin-left: 20px;
+            background-color: #ffcc00;
+            color: #00274d;
+            border: none;
+            width: 40px; /* Adjust as needed */
+            height: 40px; /* Adjust as needed */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px; /* Adjust emoji size */
+        }
+
+        .profile-button:hover {
+            background-color: #ffaa00;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(249, 249, 249, 0.8);
+            border-bottom: 1px solid #ddd;
+        }
+
+        .prev-page-button {
+            background: #007bff;
             color: white;
             border: none;
             border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .language-container {
+            padding: 10px 20px;
             display: flex;
             align-items: center;
-        }
-
-        .language-select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 16px;
             margin-right: 10px;
         }
 
-        .user-icon {
-            width: 30px;
-            height: auto;
+        .prev-page-button:hover {
+            background: #0056b3;
         }
 
-        main {
+        .search-bar input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .content {
             display: flex;
-            flex-grow: 1;
+            flex: 1;
+            overflow: auto;
         }
 
-        .filter-section {
-            width: 250px;
+        .filters {
+            width: 25%;
+            background: rgba(249, 249, 249, 0.8);
             padding: 20px;
-            background-color: #f9f9f9;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
 
-        .results-section {
-            flex-grow: 1;
-            padding: 20px;
+        .filters h2 {
+            margin-top: 0;
         }
 
-        .filter-section h2 {
+        .filter-group {
             margin-bottom: 15px;
         }
 
-        .filter-section select {
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .filter-group select {
             width: 100%;
             padding: 8px;
-            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .results {
+            width: 75%;
+            padding: 20px;
         }
 
-        .result-item {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .result-item h3 {
+        .results h2 {
             margin-top: 0;
         }
 
-        footer {
-            background-color: #f0f0f0;
-            padding: 10px;
-            text-align: center;
+        .result-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .result-item {
+            background: rgba(249, 249, 249, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            width: calc(33.333% - 20px);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .result-item h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+        }
+
+        .result-item p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 1200px) {
+            .filters, .results {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+
+            .filters, .results {
+                width: 100%;
+            }
+
+            .result-item {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .result-item {
+                width: 100%;
+            }
+
+            .search-bar input[type="text"] {
+                width: 70%;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="/assets/logo.png" alt="EduAccess Logo" class="logo">
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search or enter code">
-            <button class="search-button">Search</button>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="/assets/logo.png" alt="Edu Access Logo" class="logo">
+                <h1>Edu Access</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/home.html">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="/library.html">Library</a></li>
+                    </ul>
+                    <button class="profile-button" onclick="alert('Profile page will appear here.')">👤</button>
+                </nav>
+            </div>
+        </header>
+        <div class="search-bar">
+            <button class="prev-page-button" onclick="goToPreviousPage()">
+                &larr; Previous
+            </button>
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterResults()">
         </div>
-        <div class="language-container">
-            <select class="language-select">
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-                <option value="ur">Urdu</option>
-                <option value="sa">Sanskrit</option>
-            </select>
-            <img src="https://diksha.gov.in/assets/images/profile-icon.svg" alt="User" class="user-icon">
-        </div>
-    </header>
-
-    <main>
-        <section class="filter-section">
-            <h2>Filter</h2>
-            <select>
-                <option value="">Select Board</option>
-                <option value="ncert">NCERT</option>
-                <option value="scert">SCERT</option>
-            </select>
-            <select>
-                <option value="">Select Medium</option>
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-                <option value="ur">Urdu</option>
-                <option value="sa">Sanskrit</option>
-            </select>
-            <select>
-                <option value="">Select Class</option>
-                <option value="1">Class 1</option>
-                <option value="2">Class 2</option>
-            </select>
-            <select>
-                <option value="">Select Subject</option>
-                <option value="math">Math</option>
-                <option value="science">Science</option>
-            </select>
-            <select>
-                <option value="">Select Content type</option>
-                <option value="etextbook">eTextbook</option>
-                <option value="learningresource">Learning Resource</option>
-                <option value="course">Course</option>
-            </select>
-        </section>
-
-        <section class="results-section">
-            <h2>Showing results in "all" 822066</h2>
-            <div class="result-grid">
-                <div class="result-item">
-                    <h3>Learning Resource</h3>
-                    <p>Urdu</p>
-                    <p>Board: NCERT</p>
-                    <p>Adult Education Medium: Urdu</p>
+        <div class="content">
+            <div class="filters">
+                <h2>Filters</h2>
+                <div class="filter-group">
+                    <label for="board">Board/Organization</label>
+                    <select id="board" onchange="filterResults()">
+                        <option value="">Select Board</option>
+                        <option value="CBSE">CBSE</option>
+                        <option value="ICSE">ICSE</option>
+                    </select>
                 </div>
-                <div class="result-item">
-                    <h3>Learning Resource</h3>
-                    <p>Sanskrit</p>
-                    <p>Board: NCERT</p>
-                    <p>Adult Education Medium: Sanskrit</p>
-                    <p>Subject: Foundational Literacy and Numeracy</p>
+                <div class="filter-group">
+                    <label for="medium">Medium</label>
+                    <select id="medium" onchange="filterResults()">
+                        <option value="">Select Medium</option>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                    </select>
                 </div>
-                <div class="result-item">
-                    <h3>eTextbook</h3>
-                    <p>eTextbook NCERT 2403</p>
-                    <p>Board: SCERT</p>
-                    <p>Class 6 Medium: English</p>
-                    <p>Subject: Education</p>
+                <div class="filter-group">
+                    <label for="class">Class</label>
+                    <select id="class" onchange="filterResults()">
+                        <option value="">Select Class</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
                 </div>
-                <div class="result-item">
-                    <h3>Learning Resource</h3>
-                    <p>English</p>
-                    <p>Board: NCERT</p>
-                    <p>Adult Education Medium: English</p>
-                    <p>Subject: Foundational Literacy and Numeracy</p>
+                <div class="filter-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" onchange="filterResults()">
+                        <option value="">Select Subject</option>
+                        <option value="Math">Math</option>
+                        <option value="Science">Science</option>
+                    </select>
                 </div>
-                <div class="result-item">
-                    <h3>Course</h3>
-                    <p>Virtual Lab as a teaching learning tool for Chemistry Eng 82</p>
-                    <p>Board: NCERT</p>
-                    <p>CPD Medium: English</p>
-                    <p>Subject: CPD</p>
-                </div>
-                <div class="result-item">
-                    <h3>Learning Resource</h3>
-                    <p>Hindi</p>
-                    <p>Board: NCERT</p>
-                    <p>Adult Education Medium: Hindi</p>
-                    <p>Subject: Foundational Literacy and Numeracy</p>
-                </div>
-                <div class="result-item">
-                    <h3>Explanation Content</h3>
-                    <p>Watch: Virtual Labs as a teaching learning tool for Chemistry Eng 82</p>
-                </div>
-                <div class="result-item">
-                    <h3>Explanation Content</h3>
-                    <p>Refer: Virtual Labs as a teaching learning tool for Chemistry Eng 82</p>
-                </div>
-                <div class="result-item">
-                    <h3>Learning Resource</h3>
-                    <p>Learning Resource NCERT 2403</p>
+                <div class="filter-group">
+                    <label for="content-type">Content Type</label>
+                    <select id="content-type" onchange="filterResults()">
+                        <option value="">Select Content Type</option>
+                        <option value="Video">Video</option>
+                        <option value="Text">Text</option>
+                    </select>
                 </div>
             </div>
-        </section>
-    </main>
+            <div class="results">
+                <h2>Showing results</h2>
+                <div class="result-grid" id="resultGrid">
+                    <div class="result-item" data-board="CBSE" data-medium="English" data-class="1" data-subject="Math" data-content-type="Text">
+                        <img src="/assets/cbse.jpeg" alt="Icon">
+                        <h3>Course Title 1</h3>
+                        <p>Board: CBSE</p>
+                        <p>Class: 1</p>
+                        <p>Subject: Math</p>
+                    </div>
+                    <div class="result-item" data-board="ICSE" data-medium="English" data-class="2" data-subject="Science" data-content-type="Video">
+                        <img src="/assets/icse.jpeg" alt="Icon">
+                        <h3>Course Title 2</h3>
+                        <p>Board: ICSE</p>
+                        <p>Class: 2</p>
+                        <p>Subject: Science</p>
+                    </div>
+                    <div class="result-item" data-board="CBSE" data-medium="English" data-class="3" data-subject="English" data-content-type="Text">
+                        <img src="/assets/cbse.jpeg" alt="Icon">
+                        <h3>Course Title 3</h3>
+                        <p>Board: CBSE</p>
+                        <p>Class: 3</p>
+                        <p>Subject: English</p>
+                    </div>
+                    <!-- Repeat .result-item for more results -->
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <footer>
-        <p>Footer content here</p>
-    </footer>
+    <script>
+        function filterResults() {
+            const board = document.getElementById('board').value.toLowerCase();
+            const medium = document.getElementById('medium').value.toLowerCase();
+            const classLevel = document.getElementById('class').value.toLowerCase();
+            const subject = document.getElementById('subject').value.toLowerCase();
+            const contentType = document.getElementById('content-type').value.toLowerCase();
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+            const items = document.getElementById('resultGrid').getElementsByClassName('result-item');
+
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const itemBoard = item.getAttribute('data-board').toLowerCase();
+                const itemMedium = item.getAttribute('data-medium').toLowerCase();
+                const itemClass = item.getAttribute('data-class').toLowerCase();
+                const itemSubject = item.getAttribute('data-subject').toLowerCase();
+                const itemContentType = item.getAttribute('data-content-type').toLowerCase();
+                const title = item.getElementsByTagName('h3')[0].textContent.toLowerCase();
+                const text = item.textContent.toLowerCase();
+
+                const matchesSearch = title.includes(searchInput) || text.includes(searchInput);
+                const matchesBoard = board === '' || itemBoard === board;
+                const matchesMedium = medium === '' || itemMedium === medium;
+                const matchesClass = classLevel === '' || itemClass === classLevel;
+                const matchesSubject = subject === '' || itemSubject === subject;
+                const matchesContentType = contentType === '' || itemContentType === contentType;
+
+                if (matchesSearch && matchesBoard && matchesMedium && matchesClass && matchesSubject && matchesContentType) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+
+        function goToPreviousPage() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

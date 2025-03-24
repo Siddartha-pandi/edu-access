@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <h1 id="title">EduAccess</h1>
     <link rel="icon" type="image/x-icon" href="/assets/logo.png">
     <style>
         body {
@@ -17,7 +16,7 @@
         header {
             background-color: #00274d;
             color: white;
-            width: 100%; /* Ensures the header spans the full width */
+            width: 100%;
         }
 
         .header-content {
@@ -29,7 +28,7 @@
         }
 
         .header-content img {
-            margin-right: 20px; /* Space between logo and title */
+            margin-right: 20px;
         }
 
         header h1 {
@@ -70,27 +69,26 @@
             text-decoration: none;
         }
 
-        .auth-buttons {
-            display: flex;
+        .profile-button {
             margin-left: 20px;
-        }
-
-        .auth-buttons button {
-            margin-left: 10px;
             background-color: #ffcc00;
             color: #00274d;
             border: none;
-            padding: 8px 15px;
+            width: 40px; /* Adjust as needed */
+            height: 40px; /* Adjust as needed */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            border-radius: 5px;
+            font-size: 24px; /* Adjust emoji size */
         }
 
-        .auth-buttons button:hover {
+        .profile-button:hover {
             background-color: #ffaa00;
         }
 
         .hero {
-            /* height: 500px; */
             text-align: center;
             padding: 100px 20px;
             background-color: #00509e;
@@ -140,10 +138,7 @@
                     <li><a href="#">About</a></li>
                     <li><a href="/library.html">Library</a></li>
                 </ul>
-                <div class="auth-buttons">
-                    <button onclick="alert('Login form will appear here.')">Login</button>
-                    <button onclick="alert('Register form will appear here.')">Register</button>
-                </div>
+                <button class="profile-button" onclick="alert('Profile page will appear here.')">👤</button>
             </nav>
         </div>
     </header>
